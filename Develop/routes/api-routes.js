@@ -7,4 +7,19 @@ module.exports = function(app){
     app.get("/api.notes/", (req,res)=> {
         res.json(noteData)
     })
+
+    //implementation of post functionality
+
+    app.post("/api.notes",(req.res)=>{
+
+    })
+
+    //implementation of delete functionality
+
+    app.delete("/api.notes/:id",(req,res)=>{
+
+    })
+ 
+
+
 }
