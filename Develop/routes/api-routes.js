@@ -48,8 +48,36 @@ module.exports = function(app){
 
     //implementation of delete functionality
 
-    app.delete("/api.notes/:id",(req,res)=>{
-
+    app.delete("/api/notes/:id",(request,result)=> {
+     
+        const noteId = request.params.id;
+        //request note saved to variable
+    
+        (console.log("noteId: ", noteId))
+        //note id console logged
+    
+        fs.readFile("./db/db.json", "utf8", (err, noteData)=> {
+            if (err) throw err;
+            //error handling
+    
+            const allNotes = JSON.parse(noteData)
+            //response parsed to JSON
+            const newAllNotes = allNotes.filter(note => note.id != noteId);
+            //all notes that do not correspand to present note id filtered out
+    
+            fs.writeFile("./db/db.json",JSON.stringify(newAllNotes,null,2),err => {
+                if (err) throw err;
+                //error handling
+                result.json(true);
+                console.log("Note has been deleted!")
+                //confirmation note has been deleted
+            })
+    
+        })
+    
+    
+    
+    
     })
  
 
