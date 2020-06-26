@@ -75,7 +75,14 @@ const postNotes = async (req, res) => {
 };
 
 const delNotes = async (req, res) => {
-    
+    const filePath = path.join(__dirname, "public/notes.html")
+    const dataBaseFilePath = path.join(__dirname, "/db/db.json")
+    const notesData = await readFileAsync(dataBaseFilePath,"UTF8")
+    const noteParse = JSON.parse(notesData)
+
+    noteParse.splice(noteParse[req.params.id], 1);
+    await writeFileAsync(dataBaseFilePath, JSON.stringify(noteParse), "UTF8")
+    res.sendFile(filePath)
 };
 
 const grabNotesData = async () => {
