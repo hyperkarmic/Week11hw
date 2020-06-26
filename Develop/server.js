@@ -37,11 +37,12 @@ const serveHome = (req, res) => {
 //now the routes for the JS/CSS
 
 const getJS = (req, res) => {
+    const filePath = path.join(__dirname, "/public/assets/js/index.js")
     
 };
 
 const getCSS = (req, res) => {
-    
+    const filePath = path.join(__dirname, "/public/assets/css/styles.css")
 };
 
 const getNotes = async (req, res) => {
