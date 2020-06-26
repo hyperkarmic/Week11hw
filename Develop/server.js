@@ -55,6 +55,22 @@ const getNotes = async (req, res) => {
 };
 
 const postNotes = async (req, res) => {
+    const newNotes = req.body;
+    const filePath = path.join(__dirname, "assets/db/db.json")
+    const parsedNotesData = await grabNotesData()
+
+    const genId = parsedNotesData.length + 1
+
+    parsedNotesData.push({
+        id: genId,
+        title: newNotes.title,
+        text: newNotes.text
+    })
+
+    await noteWriter(parsedNotesData)
+
+    res.status(200).sendFile(filepath)
+
     
 };
 
@@ -69,6 +85,12 @@ const grabNotesData = async () => {
     return notesParsed
 
 }
+
+const noteWriter = async (parsedNotesData) => {
+    const notesFilePath = path.join(__dirname, "/db/db.json");
+     await writeFileAsync(notesFilePath, JSON.stringify(parsedNotesData))
+
+};
 
 
 
