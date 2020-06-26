@@ -20,14 +20,21 @@ const readFileAsync = promisify(fs.readfile)
 const writeFileAsync = promisify(fs.writefile)
 
 //this is where the functions will be populated
+//firstly html routes
 
 const serveHome = (req, res) => {
+    const filePath = path.join(__dirname, "/public/index.html")
+    res.sendFile(filePath)
     
   };
 
   const serveNotes = (req, res) => {
+    const filePath = path.join(__dirname, "/public/notes.html")
+    res.sendFile(filePath)
     
 };
+
+//now the routes for the JS/CSS
 
 const getJS = (req, res) => {
     
