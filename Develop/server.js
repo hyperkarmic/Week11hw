@@ -44,8 +44,13 @@ const getJS = (req, res) => {
 const getCSS = (req, res) => {
     const filePath = path.join(__dirname, "/public/assets/css/styles.css")
 };
+//these are the API routes
 
+
+//this function grabs Notes database - using grabNotesData function
 const getNotes = async (req, res) => {
+    const notes = await grabNotesData()
+    res.json(notes)
     
 };
 
@@ -56,6 +61,16 @@ const postNotes = async (req, res) => {
 const delNotes = async (req, res) => {
     
 };
+
+const grabNotesData = async () => {
+    const notesFilePath = path.join(__dirname, "/db/db/.json")
+    const notesData = await readFileAsync(notesFilePath, "ut8")
+    const notesParsed = JSON.parse(notesData)
+    return notesParsed
+
+}
+
+
 
 
 
