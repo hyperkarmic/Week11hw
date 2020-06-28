@@ -4,6 +4,8 @@ This is an app that reads, writes and deletes notes!
 ##Description
 This is a the Trilogy/Manchester University week 11 homework.  This is an app, that has can take notes, allowing them to be read, saved and deleted, via POST, READ and DELETE API routes.  I have written a lot of the back end code, but the HTML, JQUERY and front end JavaScript was supplied.
 
+https://github.com/hyperkarmic/Week11hw
+
 ##Visuals
 A video of the functionality can be found at:
 
